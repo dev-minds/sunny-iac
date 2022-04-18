@@ -39,6 +39,10 @@ terraform {
 # Service calls - VPC | ELC | S3 | EC2-Compute 
 # ==================================================================
 
+
+# ======================
+# VPC 
+# ======================
 module "dev_vpc" {
   source = "../modules/vpc/"
 
@@ -49,6 +53,7 @@ module "dev_vpc" {
   inst_tenancy      = "default"
   environment       = "dev"
 
+  # Subnet Defitions 
   env_subnet_1a     = "10.102.1.0/24"
   azs               = "eu-west-1a"
   map_public_ip_on_launch = true
@@ -56,6 +61,10 @@ module "dev_vpc" {
   description       = "VPC configs for dev"
 }
 
+
+# ======================
+# S3
+# ======================
 module "dev_s3" {
   source = "../modules/s3/"
 
