@@ -109,7 +109,7 @@ resource "aws_security_group" "allow_traffic" {
   }
 }
 
-resource "aws_network_interface" "SunnyVpcNI" {
+resource "aws_network_interface" "this" {
   subnet_id       = aws_subnet.this.id
   private_ips     = ["10.102.1.50"]
   security_groups = [aws_security_group.allow_traffic.id]
