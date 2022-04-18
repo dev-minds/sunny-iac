@@ -38,6 +38,24 @@ terraform {
 # ==================================================================
 # Service calls - VPC | ELC | S3 | EC2-Compute 
 # ==================================================================
+
+module "dev_vpc" {
+  source = "../modules/vpc/"
+
+  cidr              = "10.102.0.0/16"
+  project_domain    = "sunny-backend"
+  dns_support       = true
+  dns_hostn         = true 
+  inst_tenancy      = "default"
+  environment       = "dev"
+
+  env_subnet_1a     = "10.102.1.0/24"
+  azs               = "eu-west-1a"
+  map_public_ip_on_launch = true
+
+  description       = "VPC configs for dev"
+}
+
 module "dev_s3" {
   source = "../modules/s3/"
 
@@ -48,3 +66,4 @@ module "dev_s3" {
   environment       = "dev"
   description       = "s3 bucket for dev env works"
 }
+
